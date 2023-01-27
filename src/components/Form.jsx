@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Form extends React.Component {
   render() {
@@ -11,7 +12,7 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      hasTrunfo,
+      //   hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick } = this.props;
@@ -24,7 +25,7 @@ class Form extends React.Component {
               value={ cardName }
               data-testid="name-input"
               required
-              name="name"
+              name="cardName"
               id="name"
               type="text"
               maxLength="40"
@@ -34,9 +35,9 @@ class Form extends React.Component {
           Descrição
           <label htmlFor="description">
             <textarea
+              name="cardDescription"
               value={ cardDescription }
               data-testid="description-input"
-              name="description"
               id="description"
               cols="30"
               rows="10"
@@ -46,6 +47,7 @@ class Form extends React.Component {
           <label htmlFor="attr01">
             Attr01
             <input
+              name="cardAttr1"
               data-testid="attr1-input"
               type="number"
               id="attr01"
@@ -56,6 +58,7 @@ class Form extends React.Component {
           <label htmlFor="attr02">
             Attr02
             <input
+              name="cardAttr2"
               data-testid="attr2-input"
               type="number"
               id="attr02"
@@ -66,6 +69,7 @@ class Form extends React.Component {
           <label htmlFor="attr03">
             Attr03
             <input
+              name="cardAttr3"
               data-testid="attr3-input"
               type="number"
               id="attr03"
@@ -79,6 +83,7 @@ class Form extends React.Component {
               data-testid="image-input"
               id="img"
               type="text"
+              name="cardImage"
               onChange={ onInputChange }
               value={ cardImage }
             />
@@ -120,4 +125,17 @@ class Form extends React.Component {
     );
   }
 }
+Form.propTypes = {
+  cardName: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
+  cardImage: PropTypes.string.isRequired,
+  cardRare: PropTypes.string.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
+  cardTrunfo: PropTypes.bool.isRequired,
+};
 export default Form;
