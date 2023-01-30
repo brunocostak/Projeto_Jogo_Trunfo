@@ -6,27 +6,24 @@ class App extends React.Component {
   state = {
     cardName: '',
     cardDescription: '',
-    cardAttr1: '',
-    cardAttr2: '',
-    cardAttr3: '',
+    cardAttr1: 0,
+    cardAttr2: 0,
+    cardAttr3: 0,
     cardImage: '',
     cardRare: '',
-    cardTrunfo: '',
+    cardTrunfo: false,
     hasTrunfo: false,
     cards: [],
   };
 
   handleChange = ({ target }) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    if (value) {
-      this.setState({ hasTrunfo: true });
-    }
-    this.setState({ [target.name]: target.value });
+    this.setState({ [target.name]: value });
   };
 
   saveButton = () => {
     const { cardName, cardDescription, cardAttr1,
-      cardAttr2, cardAttr3, cardImage, cardRare, hasTrunfo, cards } = this.state;
+      cardAttr2, cardAttr3, cardImage, cardRare, cardTrunfo, cards } = this.state;
     cards.push({
       name: cardName,
       description: cardDescription,
@@ -35,9 +32,9 @@ class App extends React.Component {
       attr3: cardAttr3,
       image: cardImage,
       rare: cardRare,
-      trunfo: hasTrunfo,
+      trunfo: cardTrunfo,
     });
-    this.setState({
+    this.setState(() => ({
       cardName: '',
       cardDescription: '',
       cardAttr1: 0,
@@ -45,8 +42,8 @@ class App extends React.Component {
       cardAttr3: 0,
       cardImage: '',
       cardRare: 'normal',
-      hasTrunfo: true,
-    });
+      hasTrunfo: this.verifyTrunfo(),
+    }));
   };
 
   verifyStates = () => {
@@ -73,6 +70,11 @@ class App extends React.Component {
     && validacaoSoma
     && validacaoString;
     return validacao;
+  };
+
+  verifyTrunfo = () => {
+    const { cards } = this.state;
+    return cards.some((card) => card.trunfo === true);
   };
 
   render() {
