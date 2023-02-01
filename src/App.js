@@ -15,6 +15,8 @@ class App extends React.Component {
     cardTrunfo: false,
     hasTrunfo: false,
     cards: [],
+    nameFilter: '',
+    rareFilter: '',
   };
 
   handleChange = ({ target }) => {
@@ -96,6 +98,8 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       cards,
+      nameFilter,
+      rareFilter,
     } = this.state;
     return (
       <>
@@ -132,27 +136,58 @@ class App extends React.Component {
         </div>
         <div>
           {
-            cards.map((card, index) => (
-              <>
-                <Card
-                  key={ index }
-                  cardName={ card.name }
-                  cardDescription={ card.description }
-                  cardAttr1={ card.attr1 }
-                  cardAttr2={ card.attr2 }
-                  cardAttr3={ card.attr3 }
-                  cardImage={ card.image }
-                  cardRare={ card.rare }
-                  cardTrunfo={ card.trunfo }
-                />
-                <Button
-                  key={ `${index} ${card.name}` }
-                  text="Remover"
-                  remove={ () => this.removeButton(index) }
-                />
-              </>
-            ))
+            cards.filter((card) => card.rare === rareFilter || rareFilter === 'all')
+              .filter((card) => card.name.includes(nameFilter))
+              .map((card, index) => (
+                <>
+                  <Card
+                    key={ index }
+                    cardName={ card.name }
+                    cardDescription={ card.description }
+                    cardAttr1={ card.attr1 }
+                    cardAttr2={ card.attr2 }
+                    cardAttr3={ card.attr3 }
+                    cardImage={ card.image }
+                    cardRare={ card.rare }
+                    cardTrunfo={ card.trunfo }
+                  />
+                  <Button
+                    key={ `${index} ${card.name}` }
+                    text="Remover"
+                    remove={ () => this.removeButton(index) }
+                  />
+                </>
+              ))
           }
+        </div>
+        <h1>Filtros</h1>
+        <div>
+          <label htmlFor="filter-name">
+            Filtro de Nome
+            <input
+              data-testid="name-filter"
+              id="filter-name"
+              name="nameFilter"
+              type="text"
+              onChange={ (event) => {
+                this.handleChange(event);
+              } }
+            />
+          </label>
+          <label htmlFor="filter-rare">
+            Filtro de Raridade
+            <select
+              id="filter-rare"
+              data-testid="rare-filter"
+              name="rareFilter"
+              onChange={ (event) => this.handleChange(event) }
+            >
+              <option value="all">todas</option>
+              <option value="normal">normal</option>
+              <option value="raro">raro</option>
+              <option value="muito raro">muito raro</option>
+            </select>
+          </label>
         </div>
       </>
     );
