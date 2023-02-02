@@ -6,6 +6,7 @@ class Button extends React.Component {
     const { remove, text } = this.props;
     return (
       <button
+        className="remove-btn"
         type="button"
         name="btn-remove"
         data-testid="delete-button"

@@ -39,8 +39,8 @@ class Form extends React.Component {
               value={ cardDescription }
               data-testid="description-input"
               id="description"
-              cols="30"
-              rows="10"
+              cols="40"
+              rows="3"
               onChange={ onInputChange }
             />
           </label>
@@ -102,31 +102,33 @@ class Form extends React.Component {
               <option value="muito raro">muito raro</option>
             </select>
           </label>
-          <label htmlFor="checkbox">
-            {
-              !hasTrunfo
-                ? (
-                  <div>
-                    <span>Super Trybe Trunfo</span>
-                    <input
-                      checked={ cardTrunfo }
-                      onChange={ onInputChange }
-                      data-testid="trunfo-input"
-                      type="checkbox"
-                      name="cardTrunfo"
-                    />
-                  </div>)
-                : <p>Você já tem um Super Trunfo em seu baralho</p>
-            }
-          </label>
-          <button
-            disabled={ isSaveButtonDisabled }
-            data-testid="save-button"
-            type="submit"
-            onClick={ onSaveButtonClick }
-          >
-            Salvar
-          </button>
+          <div className="cb-container">
+            <label htmlFor="checkbox">
+              {
+                !hasTrunfo
+                  ? (
+                    <div>
+                      <input
+                        checked={ cardTrunfo }
+                        onChange={ onInputChange }
+                        data-testid="trunfo-input"
+                        type="checkbox"
+                        name="cardTrunfo"
+                      />
+                      <span>Super Trybe Trunfo</span>
+                    </div>)
+                  : <p>Você já tem um Super Trunfo em seu baralho</p>
+              }
+            </label>
+            <button
+              disabled={ isSaveButtonDisabled }
+              data-testid="save-button"
+              type="submit"
+              onClick={ onSaveButtonClick }
+            >
+              Salvar
+            </button>
+          </div>
         </fieldset>
       </form>
     );
