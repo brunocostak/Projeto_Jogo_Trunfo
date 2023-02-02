@@ -19,7 +19,7 @@ class Form extends React.Component {
     return (
       <form>
         <fieldset>
-          <label htmlFor="name">
+          <label className="name-form" htmlFor="name">
             Nome
             <input
               value={ cardName }
@@ -27,6 +27,7 @@ class Form extends React.Component {
               required
               name="cardName"
               id="name"
+              className="name"
               type="text"
               maxLength="40"
               onChange={ onInputChange }
@@ -47,6 +48,7 @@ class Form extends React.Component {
           <label htmlFor="attr01">
             Attr01
             <input
+              className="attr"
               name="cardAttr1"
               data-testid="attr1-input"
               type="number"
@@ -58,6 +60,7 @@ class Form extends React.Component {
           <label htmlFor="attr02">
             Attr02
             <input
+              className="attr"
               name="cardAttr2"
               data-testid="attr2-input"
               type="number"
@@ -69,6 +72,7 @@ class Form extends React.Component {
           <label htmlFor="attr03">
             Attr03
             <input
+              className="attr"
               name="cardAttr3"
               data-testid="attr3-input"
               type="number"
@@ -82,6 +86,7 @@ class Form extends React.Component {
             <input
               data-testid="image-input"
               id="img"
+              className="img"
               type="text"
               name="cardImage"
               onChange={ onInputChange }
@@ -93,6 +98,7 @@ class Form extends React.Component {
             <select
               data-testid="rare-input"
               id="select"
+              className="select"
               onChange={ onInputChange }
               value={ cardRare }
               name="cardRare"
@@ -109,6 +115,7 @@ class Form extends React.Component {
                   ? (
                     <div>
                       <input
+                        className="checkbox"
                         checked={ cardTrunfo }
                         onChange={ onInputChange }
                         data-testid="trunfo-input"

@@ -141,7 +141,7 @@ class App extends React.Component {
         </div>
         <h1 className="title-filter">Filtros</h1>
         <div className="container-filters">
-          <label htmlFor="filter-name">
+          <label className="filter-name" htmlFor="filter-name">
             Filtro de Nome
             <input
               data-testid="name-filter"
@@ -158,6 +158,7 @@ class App extends React.Component {
             Filtro de Raridade
             <select
               id="filter-rare"
+              className="filter-rare"
               data-testid="rare-filter"
               name="rareFilter"
               disabled={ trunfoFilter ? 'disabled' : '' }
