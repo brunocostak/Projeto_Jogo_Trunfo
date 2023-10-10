@@ -1,10 +1,12 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+## Como Começar 🚀
+
+Para executar este projeto em sua máquina local, siga estas etapas simples:
+
+Instale as dependências usando o npm:
+
+npm install
+Como Executar 🏃
+Agora que você instalou as dependências, você pode iniciar o projeto:
+
+npm run start
+Este comando irá iniciar o projeto e você poderá acessá-lo no seu navegador em http://localhost:3000. Divirta-se explorando as funcionalidades incríveis! 😃
